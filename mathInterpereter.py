@@ -17,5 +17,8 @@ def evaluateFunction(function: str, startingXValue: int, endingXValue: int) -> l
     YValues = getYValues(function, XValues)
     return YValues
 
-funcValues = evaluateFunction("x^2+1", -1, 1)
-print(funcValues)
+def getXValues(startingXValue: int, endingXValue: int) -> list[int]:
+    XValues = []
+    for i in range(startingXValue*1000, endingXValue*1000 + 1):
+        XValues.append(float(i)/1000.0)
+    return XValues
