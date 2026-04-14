@@ -1,0 +1,21 @@
+from pymep.realParser import eval
+
+def evaluate(evaluation: str, xValue: float) -> float:
+    result = round(float(eval(evaluation, xValue)), 6)
+    return result
+
+def getYValues(function: str, xValues: list[float]) -> list[float]:
+    yValues = []
+    for xValue in xValues:
+        yValues.append(evaluate(function, xValue))
+    return yValues
+
+def evaluateFunction(function: str, startingXValue: int, endingXValue: int) -> list[float]:
+    XValues = []
+    for i in range(startingXValue*1000, endingXValue*1000 + 1):
+        XValues.append(float(i)/1000.0)
+    YValues = getYValues(function, XValues)
+    return YValues
+
+funcValues = evaluateFunction("x^2+1", -1, 1)
+print(funcValues)
