@@ -11,9 +11,7 @@ def getYValues(function: str, xValues: list[float]) -> list[float]:
     return yValues
 
 def evaluateFunction(function: str, startingXValue: int, endingXValue: int) -> list[float]:
-    XValues = []
-    for i in range(startingXValue*1000, endingXValue*1000 + 1):
-        XValues.append(float(i)/1000.0)
+    XValues = getXValues(startingXValue, endingXValue)
     YValues = getYValues(function, XValues)
     return YValues
 
