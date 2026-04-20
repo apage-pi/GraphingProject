@@ -16,10 +16,9 @@ def functionToTextFile(fileName: str, function: str, startingXValue: int, ending
     counter = 0
     with open(fileName, "w") as out:
         out.write("X        Y\n")
-        for XValue in XValues:
+        for i in range(len(XValues)):
+            out.write(f"{XValues[i]}   {YValues[i]}")
+        out.close()
             
-            
-
-
-
 graphFunction("x^2", -1, 1)
+functionToTextFile("x-times-x.txt", "x^2", -2, 2)
