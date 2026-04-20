@@ -17,5 +17,5 @@ def evaluateFunction(function: str, XValues: list=[]) -> list[float]:
 def getXValues(startingXValue: int, endingXValue: int, interval:int=1000) -> list[int]:
     XValues = []
     for i in range(startingXValue*interval, endingXValue*interval + 1):
-        XValues.append(float(i)/1000.0)
+        XValues.append(float(i)/float(interval))
     return XValues
