@@ -10,9 +10,7 @@ def getYValues(function: str, xValues: list[float]) -> list[float]:
         yValues.append(evaluate(function, xValue))
     return yValues
 
-def evaluateFunction(function: str, startingXValue: int, endingXValue: int, XValues: list=[]) -> list[float]:
-    if XValues != []:
-        XValues = getXValues(startingXValue, endingXValue)
+def evaluateFunction(function: str, XValues: list=[]) -> list[float]:
     YValues = getYValues(function, XValues)
     return YValues
 

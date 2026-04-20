@@ -3,7 +3,7 @@ from mathInterpereter import evaluateFunction, getXValues
 
 def graphFunction(function: str, startingXValue: int, endingXValue: int) -> None:
     XValues = getXValues(startingXValue, endingXValue)
-    YValues = evaluateFunction(function, startingXValue, endingXValue)
+    YValues = evaluateFunction(function, XValues)
     plt.plot(XValues, YValues)
     plt.title(f"Graph of {function}")
     plt.ylabel('Y-Axis')
@@ -12,7 +12,7 @@ def graphFunction(function: str, startingXValue: int, endingXValue: int) -> None
 
 def functionToTextFile(fileName: str, function: str, startingXValue: int, endingXValue: int, interval: int=1) -> None:
     XValues = getXValues(startingXValue, endingXValue, interval)
-    YValues = evaluateFunction(function, startingXValue, endingXValue, XValues)
+    YValues = evaluateFunction(function, XValues)
     counter = 0
     with open(fileName, "w") as out:
         out.write("X        Y\n")
