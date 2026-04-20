@@ -20,5 +20,3 @@ def functionToTextFile(fileName: str, function: str, startingXValue: int, ending
             out.write(f"{XValues[i]}   {YValues[i]}\n")
         out.close()
             
-graphFunction("x^2", -1, 1)
-functionToTextFile("x-times-x.txt", "x^2", -2, 2)
