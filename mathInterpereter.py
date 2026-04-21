@@ -58,6 +58,29 @@ def evaluateRelation(functionLeftSide: str, functionRightSide: str, XValues: lis
                         correctYValues.append(rightSideResult)
                     else:
                         pass
+    else:
+        if "y" in functionLeftSide:
+            for i in range(len(XValues)):
+                for j in range(len(YValues)):
+                    variables = {"x":str(XValues[i]), "y":str(YValues[j])}
+                    leftSideResult = float(evaluate(functionLeftSide, YValues[j]))
+                    rightSideResult = float(evaluate(functionRightSide, XValues[j]))
+                    if leftSideResult == rightSideResult:
+                        correctXValues.append(leftSideResult)
+                        correctYValues.append(rightSideResult)
+                    else:
+                        pass
+        else:
+            for i in range(len(XValues)):
+                for j in range(len(YValues)):
+                    variables = {"x":str(XValues[i]), "y":str(YValues[j])}
+                    leftSideResult = float(evaluateExpression(functionLeftSide))
+                    rightSideResult = float(evaluate(functionRightSide, variables))
+                    if leftSideResult == rightSideResult:
+                        correctXValues.append(leftSideResult)
+                        correctYValues.append(rightSideResult)
+                    else:
+                        pass
     return correctXValues, correctYValues
 
 
