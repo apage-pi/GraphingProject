@@ -38,41 +38,40 @@ def evaluateRelation(functionLeftSide: str, functionRightSide: str, XValues: lis
     variables = {}
     if "x" in functionLeftSide:
         if "y" in functionLeftSide:
-            for i in range(len(XValues)):
-                for j in range(len(YValues)):
-                    variables = {"x":str(XValues[i]), "y":str(YValues[j])}
-                    leftSideResult = float(evaluate(functionLeftSide, variables))
-                    rightSideResult = float(evaluateExpression(functionRightSide))
-                    if leftSideResult == rightSideResult:
-                        correctXValues.append(leftSideResult)
-                        correctYValues.append(rightSideResult)
+            for xValue in XValues:
+                for yValue in YValues:
+                    variables = {"x":xValue, "y":yValue}
+                    leftSideResult = round(float(evaluate(functionLeftSide, variables)), 6)
+                    rightSideResult = round(float(evaluateExpression(functionRightSide)), 6)
+                    if leftSideResult >= rightSideResult - 0.0001 and leftSideResult <= rightSideResult + 0.0001:
+                        correctXValues.append(xValue)
+                        correctYValues.append(yValue)
         else:
-            for i in range(len(XValues)):
-                for j in range(len(YValues)):
-                    leftSideResult = float(evaluate(functionLeftSide, XValues[i]))
-                    rightSideResult = float(evaluate(functionRightSide, YValues[j]))
-                    if leftSideResult == rightSideResult:
-                        correctXValues.append(leftSideResult)
-                        correctYValues.append(rightSideResult)
+            for xValue in XValues:
+                for yValue in YValues:
+                    leftSideResult = round(float(evaluate(functionLeftSide, xValue)), 6)
+                    rightSideResult = round(float(evaluate(functionRightSide, yValue)), 6)
+                    if leftSideResult >= rightSideResult - 0.0001 and leftSideResult <= rightSideResult + 0.0001:
+                        correctXValues.append(xValue)
+                        correctYValues.append(yValue)
     else:
         if "y" in functionLeftSide:
-            for i in range(len(XValues)):
-                for j in range(len(YValues)):
-                    variables = {"x":str(XValues[i]), "y":str(YValues[j])}
-                    leftSideResult = float(evaluate(functionLeftSide, YValues[j]))
-                    rightSideResult = float(evaluate(functionRightSide, XValues[j]))
-                    if leftSideResult == rightSideResult:
-                        correctXValues.append(leftSideResult)
-                        correctYValues.append(rightSideResult)
+            for xValue in XValues:
+                for yValue in YValues:
+                    leftSideResult = round(float(evaluate(functionLeftSide, yValue)), 6)
+                    rightSideResult = round(float(evaluate(functionRightSide, xValue)), 6)
+                    if leftSideResult >= rightSideResult - 0.0001 and leftSideResult <= rightSideResult + 0.0001:
+                        correctXValues.append(xValue)
+                        correctYValues.append(yValue)
         else:
-            for i in range(len(XValues)):
-                for j in range(len(YValues)):
-                    variables = {"x":XValues[i], "y":YValues[j]}
-                    leftSideResult = float(evaluateExpression(functionLeftSide))
-                    rightSideResult = float(evaluate(functionRightSide, variables))
-                    if leftSideResult == rightSideResult:
-                        correctXValues.append(leftSideResult)
-                        correctYValues.append(rightSideResult)
+            for xValue in XValues:
+                for yValue in YValues:
+                    variables = {"x":xValue, "y":yValue}
+                    leftSideResult = round(float(evaluateExpression(functionLeftSide)), 6)
+                    rightSideResult = round(float(evaluate(functionRightSide, variables)), 6)
+                    if leftSideResult >= rightSideResult - 0.0001 and leftSideResult <= rightSideResult + 0.0001:
+                        correctXValues.append(xValue)
+                        correctYValues.append(yValue)
     return correctXValues, correctYValues
 
 
