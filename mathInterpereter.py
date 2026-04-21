@@ -24,7 +24,7 @@ def getXValues(startingXValue: int, endingXValue: int, interval:int=1000) -> lis
         XValues.append(float(i)/float(interval))
     return XValues
 
-def GetYValuesFromRange(startingYValue: int, endingYValue: int, interval:int=1000) -> list[int]:
+def getYValuesFromRange(startingYValue: int, endingYValue: int, interval:int=1000) -> list[int]:
     YValues = []
     for i in range(startingYValue*interval, endingYValue*interval + 1):
         YValues.append(float(i)/float(interval))
@@ -46,8 +46,6 @@ def evaluateRelation(functionLeftSide: str, functionRightSide: str, XValues: lis
                     if leftSideResult == rightSideResult:
                         correctXValues.append(leftSideResult)
                         correctYValues.append(rightSideResult)
-                    else:
-                        pass
         else:
             for i in range(len(XValues)):
                 for j in range(len(YValues)):
@@ -56,8 +54,6 @@ def evaluateRelation(functionLeftSide: str, functionRightSide: str, XValues: lis
                     if leftSideResult == rightSideResult:
                         correctXValues.append(leftSideResult)
                         correctYValues.append(rightSideResult)
-                    else:
-                        pass
     else:
         if "y" in functionLeftSide:
             for i in range(len(XValues)):
@@ -68,19 +64,15 @@ def evaluateRelation(functionLeftSide: str, functionRightSide: str, XValues: lis
                     if leftSideResult == rightSideResult:
                         correctXValues.append(leftSideResult)
                         correctYValues.append(rightSideResult)
-                    else:
-                        pass
         else:
             for i in range(len(XValues)):
                 for j in range(len(YValues)):
-                    variables = {"x":str(XValues[i]), "y":str(YValues[j])}
+                    variables = {"x":XValues[i], "y":YValues[j]}
                     leftSideResult = float(evaluateExpression(functionLeftSide))
                     rightSideResult = float(evaluate(functionRightSide, variables))
                     if leftSideResult == rightSideResult:
                         correctXValues.append(leftSideResult)
                         correctYValues.append(rightSideResult)
-                    else:
-                        pass
     return correctXValues, correctYValues
 
 
