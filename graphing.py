@@ -8,6 +8,7 @@ def graphFunction(function: str, startingXValue: int, endingXValue: int) -> None
     plt.title(f"Graph of {function}")
     plt.ylabel('Y-Axis')
     plt.xlabel('X-Axis')
+    plt.gca().set_aspect('equal', adjustable='box')
     plt.show()
 
 def graphRelation(relationSideLeft:str, relationSideRight: str, startingXValue: int, endingXValue:int, startingYValue: int, endingYValue:int):
@@ -18,6 +19,7 @@ def graphRelation(relationSideLeft:str, relationSideRight: str, startingXValue: 
     plt.title(f"Graph of {relationSideLeft} = {relationSideRight}")
     plt.ylabel("Y-Axis")
     plt.xlabel("x-Axis")
+    plt.gca().set_aspect('equal', adjustable='box')
     plt.show()
 
 def functionToTextFile(fileName: str, function: str, startingXValue: int, endingXValue: int, interval: int=1) -> None:

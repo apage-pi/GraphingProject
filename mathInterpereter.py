@@ -1,4 +1,5 @@
 from pymep.realParser import eval, parse
+import numpy as np
 
 def evaluate(evaluation: str, variable) -> float:
     result = round(float(eval(evaluation, variable)), 6)
@@ -18,13 +19,13 @@ def evaluateFunction(function: str, XValues: list=[]) -> list[float]:
     YValues = getYValuesFromFunction(function, XValues)
     return YValues
 
-def getXValues(startingXValue: int, endingXValue: int, interval:int=1000) -> list[int]:
+def getXValues(startingXValue: int, endingXValue: int, interval:int=100) -> list[int]:
     XValues = []
     for i in range(startingXValue*interval, endingXValue*interval + 1):
         XValues.append(float(i)/float(interval))
     return XValues
 
-def getYValuesFromRange(startingYValue: int, endingYValue: int, interval:int=1000) -> list[int]:
+def getYValuesFromRange(startingYValue: int, endingYValue: int, interval:int=100) -> list[int]:
     YValues = []
     for i in range(startingYValue*interval, endingYValue*interval + 1):
         YValues.append(float(i)/float(interval))
@@ -36,6 +37,8 @@ def evaluateRelation(functionLeftSide: str, functionRightSide: str, XValues: lis
     correctXValues: list[float] = []
     correctYValues: list[float] = []
     variables = {}
+    #if ("x^2" in functionLeftSide or "x^2" in functionRightSide) and ("y^2" in functionLeftSide or "y^2" in functionRightSide):
+        # theta = np.linspace(0, 2 * np.pi, 100)
     if "x" in functionLeftSide:
         if "y" in functionLeftSide:
             for xValue in XValues:
